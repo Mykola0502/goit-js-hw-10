@@ -12,9 +12,36 @@ body {
   line-height: 1.5;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h4,
+p {
+  margin: 0;
+}
+
 #search-box {
   font: inherit;
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+}
+
+.country-list li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.country-list li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+img {
+  display: block;
+  height: auto;
 }
