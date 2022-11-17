@@ -31,10 +31,10 @@ function onSearch(e) {
     return;
   }
   fetchCountries(searchText)
-    .then(items => {
-      console.log(items);
+    .then(countries => {
+      console.log(countries);
 
-      if (items.length > 10) {
+      if (countries.length > 10) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
@@ -44,13 +44,13 @@ function onSearch(e) {
         clearCountryList();
         clearCountryCard();
         return;
-      } else if (items.length >= 2 && items.length <= 10) {
-        appendCountryListMarkup(items);
+      } else if (countries.length >= 2 && countries.length <= 10) {
+        appendCountryListMarkup(countries);
         clearCountryCard();
         return;
       }
       clearCountryList();
-      appendCountryCardMarkup(items);
+      appendCountryCardMarkup(countries);
       //   console.log('Big country');
     })
     .catch(error => {
@@ -59,18 +59,18 @@ function onSearch(e) {
     });
 }
 
-function appendCountryListMarkup(items) {
-  //   refs.countryList.insertAdjacentHTML('beforeend', listTpl(items));
-  refs.countryList.innerHTML = listTpl(items);
+function appendCountryListMarkup(countries) {
+  //   refs.countryList.insertAdjacentHTML('beforeend', listTpl(countries));
+  refs.countryList.innerHTML = listTpl(countries);
 }
 
 function clearCountryList() {
   refs.countryList.innerHTML = '';
 }
 
-function appendCountryCardMarkup(items) {
-  //   refs.countryList.insertAdjacentHTML('beforeend', listTpl(items));
-  refs.countryCard.innerHTML = countryCardTpl(items);
+function appendCountryCardMarkup(countries) {
+  //   refs.countryList.insertAdjacentHTML('beforeend', listTpl(countries));
+  refs.countryCard.innerHTML = countryCardTpl(countries);
 }
 
 function clearCountryCard() {
