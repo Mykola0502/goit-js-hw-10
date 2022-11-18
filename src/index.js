@@ -41,16 +41,20 @@ function onSearch(e) {
         console.log(
           'Too many matches found. Please enter a more specific name.'
         );
-        clearCountryList();
-        clearCountryCard();
+        // clearCountryList();
+        // clearCountryCard();
         return;
       } else if (countries.length >= 2 && countries.length <= 10) {
         appendCountryListMarkup(countries);
-        clearCountryCard();
+        // clearCountryCard();
         return;
       }
-      clearCountryList();
+      //   clearCountryList();
       appendCountryCardMarkup(countries);
+      //   refs.countryCard.insertAdjacentHTML(
+      //     'beforeend',
+      //     appendCountryCardMarkup(countries)
+      //   );
       //   console.log('Big country');
     })
     .catch(error => {
@@ -60,8 +64,8 @@ function onSearch(e) {
 }
 
 function appendCountryListMarkup(countries) {
-  //   refs.countryList.insertAdjacentHTML('beforeend', listTpl(countries));
-  refs.countryList.innerHTML = listTpl(countries);
+  refs.countryList.insertAdjacentHTML('beforeend', listTpl(countries));
+  //   refs.countryList.innerHTML = listTpl(countries);
 }
 
 function clearCountryList() {
@@ -69,9 +73,31 @@ function clearCountryList() {
 }
 
 function appendCountryCardMarkup(countries) {
-  //   refs.countryList.insertAdjacentHTML('beforeend', listTpl(countries));
-  refs.countryCard.innerHTML = countryCardTpl(countries);
+  refs.countryCard.insertAdjacentHTML(
+    'beforeend',
+    countryCardTpl({ countries })
+  );
+  //   refs.countryCard.innerHTML = countryCardTpl({ countries });
 }
+
+/**
+ *          const BASE_URL = 'https://restcountries.com/v3.1';
+ */
+// function appendCountryCardMarkup(countries) {
+//   return countries
+//     .map(({ name, flags, capital, population, languages }) => {
+//       return `<div class="country-wrapper">
+//               <img class="country-list__flag" src="${flags.svg}" alt="Flag of ${
+//         name.official
+//       }" width = 30px height = 30px>
+//               <h2 class="country-list__name">${name.official}</h2>
+//       </div>
+// <p><b>Capital: </b>${capital}</p>
+//    <p><b>Population: </b>${population}</p>
+//    <p><b>Languages: </b>${Object.values(languages).join(', ')}</p>`;
+//     })
+//     .join('');
+// }
 
 function clearCountryCard() {
   refs.countryCard.innerHTML = '';

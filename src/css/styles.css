@@ -49,3 +49,9 @@ img {
   display: block;
   height: auto;
 }
+
+.languages-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
