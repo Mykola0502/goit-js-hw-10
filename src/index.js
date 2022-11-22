@@ -25,7 +25,7 @@ function onSearch(e) {
   clearCountryList();
   clearCountryCard();
 
-  if (searchText.length === 0) {
+  if (!searchText.length) {
     // clearCountryList();
     // clearCountryCard();
     return;
